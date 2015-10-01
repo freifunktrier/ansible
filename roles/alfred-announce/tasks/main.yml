@@ -1,0 +1,18 @@
+- name: installing dependencys
+  apt: name={{ item }} state=present
+  with_items:
+      - python3-netifaces
+      - python3-pip
+
+- name: installing more dependencys
+  pip: name=py-cpuinfo executable=pip3
+
+- name: checkout ffnord-alfred-announce
+  git: repo=https://github.com/freifunk-mwu/ffnord-alfred-announce.git
+       dest=/usr/local/src/ffnord-alfred-announce
+       version=9399a37f5659fb49953e0a155d9cce7f8209b891
+
+- name: deploy cron
+  cron: name="Announce to alfred"
+        minute="*"
+        job="PATH=/usr/local/src/alfred-2015.0/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin /usr/local/src/ffnord-alfred-announce/announce.sh  -f fftr-mesh-vpn -i br-fftr"

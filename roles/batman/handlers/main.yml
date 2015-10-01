@@ -1,0 +1,7 @@
+---
+
+- name: build batman-dkms
+  command: dkms build -m batman-adv -v 2015.1
+
+- name: install batman-dkms
+  command: dkms install -m batman-adv -v 2015.1

@@ -1,0 +1,38 @@
+
+- name: installing dependencys
+  apt: name={{ item }} state=present
+  with_items:
+    - libcap-dev
+    - pkgconf
+
+- name: downloading alfred
+  get_url: url=http://downloads.open-mesh.org/batman/stable/sources/alfred/alfred-2014.4.0.tar.gz
+           dest=/usr/local/src/alfred-2014.4.0.tar.gz
+           sha256sum=99e6c64e7069b0b7cb861369d5c198bfc7d74d41509b8edd8a17ba78e7c8d034
+
+- name: extracting alfred
+  unarchive: src=/usr/local/src/alfred-2014.4.0.tar.gz dest=/usr/local/src/ copy=no
+
+#neede because it's missing in ubuntus libcap-dev
+#- name: copying pkgconf
+#  copy: src=libcap.pc dest=/usr/local/src/alfred-2015.0/libcap.pc
+
+- name: compiling alfred
+  shell: make CONFIG_ALFRED_GPSD=n chdir=/usr/local/src/alfred-2014.4.0 creates=/usr/local/src/alfred-2014.4.0/alfred
+
+
+
+#- name: downloading alfred
+  #get_url: url=http://downloads.open-mesh.org/batman/stable/sources/alfred/alfred-2015.0.tar.gz
+           #dest=/usr/local/src/alfred-2015.0.tar.gz
+           #sha256sum=c66a20e5814b4afefa7b07370e20cc9a01b5f31ef9c554d132778f89e5ba736c
+
+#- name: extracting alfred
+  #unarchive: src=/usr/local/src/alfred-2015.0.tar.gz dest=/usr/local/src/ copy=no
+
+##neede because it's missing in ubuntus libcap-dev
+#- name: copying pkgconf
+  #copy: src=libcap.pc dest=/usr/local/src/alfred-2015.0/libcap.pc
+
+#- name: compiling alfred
+  #shell: PKG_CONFIG_PATH=. make CONFIG_ALFRED_GPSD=n chdir=/usr/local/src/alfred-2015.0 creates=/usr/local/src/alfred-2015.0/alfred

@@ -1,0 +1,41 @@
+
+- name: install tinc
+  apt: name=tinc state=present
+
+- name: create user
+  user: name=tinc
+
+- name: deploy chuser
+  copy: src=tinc-default dest=/etc/default/tinc
+
+- name: checkout icvpn
+  git: repo=https://github.com/freifunk/icvpn.git
+       dest=/etc/tinc/icvpn
+
+- name: deploy post-merge-hook
+  copy: src=post-merge dest=/etc/tinc/icvpn/.git/hooks/post-merge mode=755
+
+- name: deploy tinc-config
+  template: src=tinc.conf dest=/etc/tinc/icvpn/tinc.conf owner=root group=root mode=644
+  notify:
+   - restart tinc
+
+- name: deploy up/down-links
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/tinc-{{ item }} dest=/etc/tinc/icvpn/tinc-{{ item }} state=link
+  with_items:
+     - up
+     - down
+  notify:
+   - restart tinc
+
+- name: Enable tinc during boot
+  lineinfile: dest=/etc/tinc/nets.boot line=icvpn
+  notify:
+   - restart tinc
+
+- name: generate tinc key
+  script: keygen.expect creates=/etc/tinc/icvpn.priv
+  notify:
+   - restart tinc
+
+#TODO: autoupdate

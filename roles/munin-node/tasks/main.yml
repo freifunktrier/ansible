@@ -1,0 +1,11 @@
+
+- name: installing munin-node
+  apt: name={{ item }} state=present
+  with_items:
+      - munin-node
+      - munin-plugins-core
+      - munin-plugins-extra
+
+- name: deploying config
+  copy: src=munin-node.conf dest=/etc/munin/munin-node.conf owner=root group=root mode=611
+  notify: reload munin-node

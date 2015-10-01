@@ -1,0 +1,42 @@
+
+- name: installing bird(6) and icvpn-scripts-dependencys
+  apt: name={{ item }} state=present
+  with_items:
+      - bird
+      - bird6
+      - python-yaml
+
+- name: installing config symlink
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/{{ item }}.conf dest=/etc/bird/{{ item }}.conf state=link force=yes
+  with_items:
+    - bird
+    - bird6
+  notify: 
+    - reload bird
+    - reload bird6
+
+- name: config directories
+  file: path="/etc/bird/{{ item }}/" state=directory mode=0755
+  with_items:
+    - bird.d
+    - bird6.d
+
+- name: generating peerings for bird
+  shell: sudo -u nobody /var/lib/icvpn/icvpn-scripts/mkbgp -4 -f bird -d peers -s /var/lib/icvpn/icvpn-meta -x trier -t berlin:uplink_peers | sed 's/protocol bgp berlin2 from uplink_peers {/protocol bgp berlin2 from prefered_uplink_peers {/' > /etc/bird/bird.d/icvpn.conf
+     creates=/etc/bird/bird.d/icvpn.conf
+  notify: reload bird
+
+- name: generating roa for bird
+  shell: sudo -u nobody /var/lib/icvpn/icvpn-scripts/mkroa -4 -f bird -s /var/lib/icvpn/icvpn-meta > /etc/bird/roa4.con
+     creates=/etc/bird/roa4.con
+  notify: reload bird
+
+- name: generating peerings for bird6
+  shell: sudo -u nobody /var/lib/icvpn/icvpn-scripts/mkbgp -6 -f bird -d peers -s /var/lib/icvpn/icvpn-meta -x trier -t berlin:uplink_peers | sed 's/protocol bgp berlin2 from uplink_peers {/protocol bgp berlin2 from prefered_uplink_peers {/' > /etc/bird/bird6.d/icvpn.conf
+     creates=/etc/bird/bird6.d/icvpn.conf
+  notify: reload bird6
+  
+- name: generating roa for bird6
+  shell: sudo -u nobody /var/lib/icvpn/icvpn-scripts/mkroa -6 -f bird -s /var/lib/icvpn/icvpn-meta > /etc/bird/roa6.con
+     creates=/etc/bird/roa6.con
+  notify: reload bird6

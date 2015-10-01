@@ -1,0 +1,34 @@
+
+- name: installing bind9 and icvpn-scripts-dependencys
+  apt: name={{ item }} state=present
+  with_items:
+      - bind9
+      - python-yaml
+
+- name: checking if git is checked out
+  stat: path=/etc/bind/.git
+  register: bind_git
+
+- name: moving rndc.key
+  command: mv /etc/bind/rndc.key /etc/rndc.key-ansible-tmp-file
+  when: bind_git.stat.isdir is not defined or not bind_git.stat.isdir
+
+- name: removing /etc/bind/ if it's not git
+  file: path=/etc/bind/ state=absent
+  when: bind_git.stat.isdir is not defined or not bind_git.stat.isdir
+
+- name: checkout config
+  git: repo=https://github.com/freifunktrier/DNS_config.git
+       dest=/etc/bind/
+  notify: restart bind9
+
+- name: moving rndc.key back
+  command: mv /etc/rndc.key-ansible-tmp-file /etc/bind/rndc.key
+  when: bind_git.stat.isdir is not defined or not bind_git.stat.isdir
+
+- name: generating icvpn-peers for bind9
+  shell: sudo -u nobody /var/lib/icvpn/icvpn-scripts/mkdns -f bind -s /var/lib/icvpn/icvpn-meta -x trier > /etc/bind/ic.conf
+     creates=/etc/bind/ic.conf
+  notify: restart bind9
+
+#TODO: autoupdate

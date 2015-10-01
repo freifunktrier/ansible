@@ -1,0 +1,5 @@
+dependencies:
+  - { role: ansible-dependencys }
+  - { role: bird-icvpn }
+  - { role: bind9 }
+  - { role: icvpn-git }

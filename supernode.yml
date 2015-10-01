@@ -1,0 +1,11 @@
+---
+- hosts: all
+  sudo: yes
+  roles:
+     - update
+     - netconfig
+     - icvpn-autoupdate
+     - alfred-announce
+     - vnstat
+     - dhcp
+     - munin-node

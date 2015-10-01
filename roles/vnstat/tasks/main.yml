@@ -1,0 +1,10 @@
+- name: installing vnstat
+  apt: name={{ item }} state=present
+  with_items:
+      - vnstat
+      - vnstati
+
+- name: installing config symlink
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/vnstat.conf dest=/etc/vnstat.conf state=link force=yes
+  notify: 
+    - reload vnstat

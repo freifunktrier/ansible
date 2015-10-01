@@ -1,0 +1,33 @@
+- name: Add repository-gpg-key for fastd
+  apt_key: keyserver=pool.sks-keyservers.net id=6664E7BDA6B669881EC52E7516EF3F64CB201D9C state=present
+
+- name: add universe-factory for fastd
+  apt_repository: >
+    repo="deb http://repo.universe-factory.net/debian/ sid main"
+    update_cache=yes
+
+- name: install fastd
+  apt: name=fastd state=present
+
+- name: fastd directories
+  file: path="/etc/fastd/fftr-mesh-vpn" state=directory mode=0700
+
+- name: fastd config symlink
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/fastd.conf dest=/etc/fastd/fftr-mesh-vpn/fastd.conf state=link
+  notify: 
+  - restart fastd
+
+- name: fastd keygen
+  script: fastd-keygen.sh /etc/fastd/fftr-mesh-vpn creates=/etc/fastd/fftr-mesh-vpn/secret.conf
+  notify: 
+  - restart fastd
+
+- name: checkout peerkey-repository
+  git: repo=https://github.com/freifunktrier/fftr-peers.git
+       dest=/etc/fastd/fftr-mesh-vpn/peers
+
+- name: deploy updateskript
+  copy: src=autoupdate_fastd_keys.sh dest=/usr/local/bin/autoupdate_fastd_keys.sh owner=root group=root mode=755
+
+- name: deploy cron
+  cron: name="Update fastd peers" minute="*/5" job="/usr/local/bin/autoupdate_fastd_keys.sh > /dev/null 2>&1"

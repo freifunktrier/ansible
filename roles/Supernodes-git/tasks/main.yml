@@ -1,0 +1,4 @@
+
+- name: checkout Supernodes
+  git: repo=https://github.com/freifunktrier/Supernodes.git
+       dest=/var/lib/Supernodes

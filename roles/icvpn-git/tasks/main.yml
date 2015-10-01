@@ -1,0 +1,8 @@
+
+- name: checkout icvpn-meta
+  git: repo=https://github.com/freifunk/icvpn-meta.git
+       dest=/var/lib/icvpn/icvpn-meta
+
+- name: checkout icvpn-scripts
+  git: repo=https://github.com/freifunk/icvpn-scripts.git
+       dest=/var/lib/icvpn/icvpn-scripts

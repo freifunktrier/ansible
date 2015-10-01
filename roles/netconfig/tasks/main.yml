@@ -1,0 +1,25 @@
+- name: installing brctl
+  apt: name=bridge-utils state=present
+
+- name: deploying /etc/network/interfaces
+  copy: src=interfaces dest=/etc/network/interfaces
+
+- name: checking /etc/network/interfaces.d
+  stat: path=/etc/network/interfaces.d
+  register: interfaces_d
+
+- name: removing /etc/network/interfaces.d if it's a folder
+  file: path=/etc/network/interfaces.d state=absent
+  when: interfaces_d.stat.isdir is defined and interfaces_d.stat.isdir
+
+- name: linking /etc/network/interfaces.d
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/interfaces.d dest=/etc/network/interfaces.d state=link force=yes
+  notify: 
+  - restart networking
+
+- name: deploying rc.local
+  copy: src=rc.local dest=/etc/rc.local
+
+- name: executing rc.local to load routing
+  command: /etc/rc.local
+  changed_when: False

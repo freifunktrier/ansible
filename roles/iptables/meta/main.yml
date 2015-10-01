@@ -1,0 +1,5 @@
+dependencies:
+  - { role: ansible-dependencys }
+  - { role: alfred }
+  - { role: alfred-json }
+  - { role: Supernodes-git }

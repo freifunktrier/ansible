@@ -1,0 +1,4 @@
+---
+
+- name: reload vnstat
+  service: name=vnstat state=reloaded

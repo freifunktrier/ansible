@@ -1,0 +1,20 @@
+- name: installing dependencys
+  apt: name=isc-dhcp-server state=present
+
+- name: installing apparmor-link
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/usr.sbin.dhcpd dest=/etc/apparmor.d/local/usr.sbin.dhcpd state=link force=yes
+  notify: reload apparmor
+
+- name: installing config-link
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/dhcpd.conf dest=/etc/dhcp/dhcpd.conf state=link force=yes
+  notify: restart dhcpd
+
+- name: checkout dhcp-static
+  git: repo=https://github.com/freifunktrier/dhcp-static.git
+       dest=/var/lib/dhcp-static
+
+- name: linking dhcp-static
+  file: src=/var/lib/dhcp-static/static.conf dest=/etc/dhcp/static.conf state=link
+  notify: restart dhcpd
+
+#TODO: autoupdate

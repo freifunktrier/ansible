@@ -1,0 +1,1 @@
+salem ansible_ssh_user=ansible ansible_ssh_port=54922 ansible_ssh_host=freifunk.maschinendeck.derpy.ws icvpn_hostname=trier3

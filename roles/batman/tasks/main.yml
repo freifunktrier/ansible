@@ -1,0 +1,27 @@
+- name: installing dkms
+  apt: name=dkms state=present
+
+- name: downloading batman
+  get_url: url=http://downloads.open-mesh.org/batman/stable/sources/batman-adv/batman-adv-2015.1.tar.gz
+           dest=/usr/src/batman-adv.tar.gz
+           sha256sum=62ff9b769ada746e7a373a048ca8036fbd73f81c63053bbbe25fa24b4343dd0d
+
+- name: extracting batman
+  unarchive: src=/usr/src/batman-adv.tar.gz dest=/usr/src copy=no
+
+- name: deploying dkms.conf
+  copy: src=dkms.conf dest=/usr/src/batman-adv-2015.1/dkms.conf owner=root group=root mode=611
+
+- name: adding batman to dkms
+  command: dkms add -m batman-adv -v 2015.1 creates=/var/lib/dkms/batman-adv/2015.1
+  notify: 
+  - build batman-dkms
+  - install batman-dkms
+
+- name: install batctl
+  apt: name=batctl state=present install_recommends=false
+
+- name: Enable batman during boot
+  lineinfile: dest=/etc/modules line=batman-adv
+
+- modprobe: name=batman-adv

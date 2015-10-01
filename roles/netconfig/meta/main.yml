@@ -1,0 +1,8 @@
+dependencies:
+  - { role: ansible-dependencys }
+  - { role: Supernodes-git }
+  - { role: fastd }
+  - { role: batman }
+  - { role: tinc-icvpn }
+  - { role: alfred }
+  - { role: iptables }

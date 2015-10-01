@@ -1,0 +1,11 @@
+#!/usr/bin/expect
+
+spawn tincd --generate-keys --net=icvpn
+
+expect "save private"
+send "/etc/tinc/icvpn.priv\r"
+
+expect "/etc/tinc/icvpn/hosts/"
+send "\r"
+
+expect eof

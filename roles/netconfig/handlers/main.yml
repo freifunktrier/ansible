@@ -1,0 +1,10 @@
+---
+
+- name: restart networking
+  shell: ifdown {{ item }} && ifup {{ item }}
+  with_items:
+    - lo
+    - br-fftr
+    - fftr-mesh-vpn
+    - bat0
+    - eth0

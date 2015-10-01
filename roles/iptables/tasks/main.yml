@@ -1,0 +1,12 @@
+
+- name: installing dependencys
+  apt: name=jq state=present
+
+- name: deploying cronjob
+  cron: name="Update firewall"
+        minute="*"
+        job="/var/lib/Supernodes/iptables.sh"
+
+- name: reload iptables
+  command: /var/lib/Supernodes/iptables.sh
+  changed_when: False
