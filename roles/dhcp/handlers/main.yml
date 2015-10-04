@@ -7,3 +7,6 @@
 
 - name: start dhcpd
   service: name=isc-dhcp-server state=started
+
+- name: reload rsyslog
+  service: name=rsyslog state=reloaded

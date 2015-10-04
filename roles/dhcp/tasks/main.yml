@@ -17,4 +17,8 @@
   file: src=/var/lib/dhcp-static/static.conf dest=/etc/dhcp/static.conf state=link
   notify: restart dhcpd
 
+- name: deploying syslog-ignore-DHCPD-config
+  copy: src=10-no-dhcp-log.conf dest=/etc/rsyslog.d/10-no-dhcp-log.conf
+  notify: reload rsyslog
+
 #TODO: autoupdate
