@@ -1,0 +1,4 @@
+- name: deploy rp-filter-sysctl
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/11-disable-return-path-filter.conf dest=/etc/sysctl.d/11-disable-return-path-filter.conf state=link
+  notify:
+   - reload sysctl
