@@ -1,0 +1,6 @@
+- name: installing apache2
+  apt: name=apache2 state=present
+
+- name: deploying apache config
+  copy: src=000-default.conf dest=/etc/apache2/sites-available/000-default.conf
+  notify: reload apache

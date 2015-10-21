@@ -6,7 +6,7 @@
      - netconfig
      - icvpn-autoupdate
      - alfred-announce
-     - vnstat
+     - vnstat-apache
      - dhcp
      - munin-node
      - rp-filter-off

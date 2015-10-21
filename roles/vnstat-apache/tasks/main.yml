@@ -1,0 +1,10 @@
+- name: deploying generator script
+  copy: src=generate-vnstati.sh dest=/usr/local/bin/generate-vnstati.sh mode=755 owner=root group=root
+
+- name: creating output dir
+  file: path="/var/www/html/traffic" state=directory
+
+- name: deploy cron
+  cron: name="regenerate vnstat-graphics"
+        minute="*"
+        job="/usr/local/bin/generate-vnstati.sh"
