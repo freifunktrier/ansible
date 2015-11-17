@@ -1,0 +1,4 @@
+- name: deploy custom-sysctl
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/11-custom-sysctl.conf dest=/etc/sysctl.d/11-custom-sysctl.conf state=link
+  notify:
+   - reload sysctl
