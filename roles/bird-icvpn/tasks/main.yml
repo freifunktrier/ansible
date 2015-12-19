@@ -15,11 +15,16 @@
     - reload bird
     - reload bird6
 
-- name: config directories
-  file: path="/etc/bird/{{ item }}/" state=directory mode=0755
+- name: installing config directories symlink
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/{{ item }} dest=/etc/bird/{{ item }} state=link force=yes
   with_items:
+    - bird.conf
     - bird.d
+    - bird6.conf
     - bird6.d
+  notify: 
+    - reload bird
+    - reload bird6
 
 - name: generating peerings for bird
   shell: sudo -u nobody /var/lib/icvpn/icvpn-scripts/mkbgp -4 -f bird -d peers -s /var/lib/icvpn/icvpn-meta -x trier -t berlin:uplink_peers | sed 's/protocol bgp berlin2 from uplink_peers {/protocol bgp berlin2 from prefered_uplink_peers {/' > /etc/bird/bird.d/icvpn.conf
@@ -27,8 +32,8 @@
   notify: reload bird
 
 - name: generating roa for bird
-  shell: sudo -u nobody /var/lib/icvpn/icvpn-scripts/mkroa -4 -f bird -s /var/lib/icvpn/icvpn-meta > /etc/bird/roa4.con
-     creates=/etc/bird/roa4.con
+  shell: sudo -u nobody /var/lib/icvpn/icvpn-scripts/mkroa -4 -f bird -s /var/lib/icvpn/icvpn-meta > /etc/bird/bird.d/roa4.con
+     creates=/etc/bird/bird.d/roa4.con
   notify: reload bird
 
 - name: generating peerings for bird6
@@ -37,6 +42,6 @@
   notify: reload bird6
   
 - name: generating roa for bird6
-  shell: sudo -u nobody /var/lib/icvpn/icvpn-scripts/mkroa -6 -f bird -s /var/lib/icvpn/icvpn-meta > /etc/bird/roa6.con
-     creates=/etc/bird/roa6.con
+  shell: sudo -u nobody /var/lib/icvpn/icvpn-scripts/mkroa -6 -f bird -s /var/lib/icvpn/icvpn-meta > /etc/bird/bird6.d/roa6.con
+     creates=/etc/bird/bird6.d/roa6.con
   notify: reload bird6
