@@ -9,4 +9,9 @@
   notify: 
     - reload vnstat
 
+- name: creating databases
+  script: create-database.bash creates=/var/lib/vnstat/icvpn
+  notify: 
+    - reload vnstat
+
 - meta: flush_handlers
