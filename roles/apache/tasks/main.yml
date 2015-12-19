@@ -4,3 +4,4 @@
 - name: deploying apache config
   copy: src=000-default.conf dest=/etc/apache2/sites-available/000-default.conf
   notify: reload apache
+- meta: flush_handlers

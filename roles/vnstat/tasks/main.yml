@@ -8,3 +8,5 @@
   file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/vnstat.conf dest=/etc/vnstat.conf state=link force=yes
   notify: 
     - reload vnstat
+
+- meta: flush_handlers

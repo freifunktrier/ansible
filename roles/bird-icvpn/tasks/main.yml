@@ -45,3 +45,5 @@
   shell: sudo -u nobody /var/lib/icvpn/icvpn-scripts/mkroa -6 -f bird -s /var/lib/icvpn/icvpn-meta > /etc/bird/bird6.d/roa6.con
      creates=/etc/bird/bird6.d/roa6.con
   notify: reload bird6
+
+- meta: flush_handlers

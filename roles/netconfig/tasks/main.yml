@@ -17,6 +17,8 @@
   notify: 
   - restart networking
 
+- meta: flush_handlers
+
 - name: deploying rc.local
   copy: src=rc.local dest=/etc/rc.local
 

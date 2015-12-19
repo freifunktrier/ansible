@@ -26,6 +26,8 @@
   git: repo=https://github.com/freifunktrier/fftr-peers.git
        dest=/etc/fastd/fftr-mesh-vpn/peers
 
+- meta: flush_handlers
+
 - name: deploy updateskript
   copy: src=autoupdate_fastd_keys.sh dest=/usr/local/bin/autoupdate_fastd_keys.sh owner=root group=root mode=755
 

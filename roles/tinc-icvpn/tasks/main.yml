@@ -38,4 +38,6 @@
   notify:
    - restart tinc
 
+- meta: flush_handlers
+
 #TODO: autoupdate

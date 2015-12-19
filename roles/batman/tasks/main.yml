@@ -18,6 +18,8 @@
   - build batman-dkms
   - install batman-dkms
 
+- meta: flush_handlers
+
 - name: install batctl
   apt: name=batctl state=present install_recommends=false
 

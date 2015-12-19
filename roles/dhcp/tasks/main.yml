@@ -21,4 +21,6 @@
   copy: src=10-no-dhcp-log.conf dest=/etc/rsyslog.d/10-no-dhcp-log.conf
   notify: reload rsyslog
 
+- meta: flush_handlers
+
 #TODO: autoupdate

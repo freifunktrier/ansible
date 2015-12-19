@@ -31,4 +31,6 @@
      creates=/etc/bind/ic.conf
   notify: restart bind9
 
+- meta: flush_handlers
+
 #TODO: autoupdate
