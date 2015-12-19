@@ -1,1 +1,2 @@
-salem ansible_ssh_user=ansible ansible_ssh_port=54922 ansible_ssh_host=freifunk.maschinendeck.derpy.ws icvpn_hostname=trier3
+salem ansible_ssh_user=ansible ansible_ssh_port=54922 ansible_ssh_host=freifunk.maschinendeck.derpy.ws icvpn_hostname=trier3 icvpn_tinc_port=655
+baldur ansible_ssh_user=ansible ansible_ssh_port=54932 ansible_ssh_host=freifunk2.maschinendeck.derpy.ws icvpn_hostname=trier_refugee icvpn_tinc_port=656
