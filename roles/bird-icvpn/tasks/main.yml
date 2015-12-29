@@ -6,15 +6,6 @@
       - bird6
       - python-yaml
 
-- name: installing config symlink
-  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/{{ item }}.conf dest=/etc/bird/{{ item }}.conf state=link force=yes
-  with_items:
-    - bird
-    - bird6
-  notify: 
-    - reload bird
-    - reload bird6
-
 - name: installing config directories symlink
   file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/{{ item }} dest=/etc/bird/{{ item }} state=link force=yes
   with_items:
