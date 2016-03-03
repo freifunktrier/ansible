@@ -2,6 +2,7 @@
 - hosts: all
   sudo: yes
   roles:
+     - pre-python
      - update
      - netconfig
      - icvpn-autoupdate
