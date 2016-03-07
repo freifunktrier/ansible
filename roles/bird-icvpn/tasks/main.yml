@@ -3,7 +3,6 @@
   apt: name={{ item }} state=present
   with_items:
       - bird
-      - bird6
       - python-yaml
 
 - name: installing config symlink
