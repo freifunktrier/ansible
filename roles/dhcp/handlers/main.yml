@@ -9,4 +9,4 @@
   service: name=isc-dhcp-server state=started
 
 - name: reload rsyslog
-  service: name=rsyslog state=reloaded
+  service: name=rsyslog state=restarted
