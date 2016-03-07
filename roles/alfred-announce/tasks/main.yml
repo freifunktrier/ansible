@@ -3,6 +3,7 @@
   with_items:
       - python3-netifaces
       - python3-pip
+      - python3-setuptools
 
 - name: installing more dependencys
   pip: name=py-cpuinfo executable=pip3
