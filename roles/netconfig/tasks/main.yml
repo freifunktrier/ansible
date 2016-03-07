@@ -21,7 +21,5 @@
 
 - name: deploying rc.local
   copy: src=rc.local dest=/etc/rc.local
-
-- name: executing rc.local to load routing
-  command: /etc/rc.local
-  changed_when: False
+  notify:
+  - load rc.local

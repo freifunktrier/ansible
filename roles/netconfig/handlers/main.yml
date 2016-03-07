@@ -8,3 +8,7 @@
     - fftr-mesh-vpn
     - bat0
     - eth0
+
+- name: load rc.local
+  command: /etc/rc.local
+  changed_when: False
