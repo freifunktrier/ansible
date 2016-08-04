@@ -1,0 +1,7 @@
+- name: "adding DerDavid"
+  user: name=DerDavid groups="adm,sudo" state=present
+
+- name: "adding DerDavid SSH-Key"
+  authorized_key: user=DerDavid key="{{ item }}" state=present
+  with_file:
+    - DerDavid.pub
