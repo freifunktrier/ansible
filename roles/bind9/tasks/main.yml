@@ -31,6 +31,8 @@
      creates=/etc/bind/ic.conf
   notify: restart bind9
 
+- name: deploy cron
+  cron: name="Update bind" minute="4" hour="12" job="cd /etc/bind/; /usr/bin/git pull > /dev/null 2>&1; /usr/sbin/service bind9 reload > /dev/null 2>&1"
+
 - meta: flush_handlers
 
-#TODO: autoupdate

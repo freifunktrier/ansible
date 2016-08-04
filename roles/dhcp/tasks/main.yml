@@ -21,6 +21,11 @@
   copy: src=10-no-dhcp-log.conf dest=/etc/rsyslog.d/10-no-dhcp-log.conf
   notify: reload rsyslog
 
+- name: deploying update-skript
+  copy: src=update-dhcpstatic.sh dest=/usr/local/bin/update-dhcpstatic.sh mode=755
+
+- name: deploy cron
+  cron: name="Update DHCP-Static" minute="48" hour="11" job="/usr/local/bin/update-dhcpstatic.sh > /dev/null 2>&1"
+
 - meta: flush_handlers
 
-#TODO: autoupdate
