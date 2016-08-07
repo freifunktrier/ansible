@@ -1,7 +1,25 @@
-- name: "adding DerDavid"
-  user: name=DerDavid groups="adm,sudo" state=present
+#add david
+# groups: allow him sudo
+# password: empty password allowing only key login but not preventing changing password
+- name: "adding users"
+  user: name={{ item }}
+        groups="adm,sudo"
+        shell="/bin/bash"
+        password=""
+        update_password=on_create
+        state=present
+  register: changes
+  with_items:
+    - david
 
-- name: "adding DerDavid SSH-Key"
-  authorized_key: user=DerDavid key="{{ item }}" state=present
+
+- name: Expire passwords of new users to force them to change
+  command: chage -d 0 {{ item.item }}
+  with_items: "{{ changes.results }}"
+  when: "{{ item.changed == true }}"
+
+
+- name: "adding david SSH-Key"
+  authorized_key: user=david key="{{ item }}" state=present
   with_file:
-    - DerDavid.pub
+    - david.pub
