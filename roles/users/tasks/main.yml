@@ -11,6 +11,7 @@
   register: changes
   with_items:
     - david
+    - tackin
 
 
 - name: Expire passwords of new users to force them to change
@@ -23,3 +24,8 @@
   authorized_key: user=david key="{{ item }}" state=present
   with_file:
     - david.pub
+
+- name: "adding tackin SSH-Key"
+  authorized_key: user=tackin key="{{ item }}" state=present
+  with_file:
+    - tackin.pub
