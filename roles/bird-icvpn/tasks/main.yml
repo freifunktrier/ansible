@@ -4,6 +4,7 @@
   with_items:
       - bird
       - python-yaml
+      - python3-yaml
 
 - name: installing config directories symlink
   file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/{{ item }} dest=/etc/bird/{{ item }} state=link force=yes

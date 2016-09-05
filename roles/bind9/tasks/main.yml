@@ -4,6 +4,7 @@
   with_items:
       - bind9
       - python-yaml
+      - python3-yaml
 
 - name: checking if git is checked out
   stat: path=/etc/bind/.git
