@@ -2,3 +2,11 @@
 - name: checkout Supernodes
   git: repo=https://github.com/freifunktrier/Supernodes.git
        dest=/var/lib/Supernodes
+
+- name: checkout Supernodes-dynamic
+  git: repo=https://github.com/freifunktrier/Supernodes-dynamic.git
+       dest=/var/lib/Supernodes-dynamic
+
+- name: deploy cron
+  cron: name="Update Supernodes-dynamic" minute="32" hour="18" job="cd /var/lib/Supernodes-dynamic; /usr/bin/git pull > /dev/null 2>&1"
+
