@@ -10,6 +10,15 @@
         minute="*"
         job="/var/lib/Supernodes/iptables.sh"
 
+- name: cron IPv6-whitelist
+  cron: name="Load whitelist from github" 
+        minute="0,15,30,45" 
+        job="wget -q https://github.com/freifunktrier/Supernodes-dynamic/raw/master/iptables-whitelist -O /tmp/git_iptables-whitelist > /dev/null"
+
+- name: load whitelist
+  command: wget -q https://github.com/freifunktrier/Supernodes-dynamic/raw/master/iptables-whitelist -O /tmp/git_iptables-whitelist > /dev/null
+  changed_when: False
+
 - name: reload iptables
   command: /var/lib/Supernodes/iptables.sh
   changed_when: False
