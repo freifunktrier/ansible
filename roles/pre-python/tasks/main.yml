@@ -1,2 +1,10 @@
 - name: install python and python-apt
   raw: sudo apt-get install python python-apt
+
+- name: install basic tools
+  apt: name={{item}} state=present
+  with_items:
+    - vim
+    - htop
+    - mtr
+    - dnsutils
