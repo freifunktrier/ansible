@@ -12,3 +12,4 @@
      - dhcp
      - munin-node
      - custom-sysctl
+     - collectd
