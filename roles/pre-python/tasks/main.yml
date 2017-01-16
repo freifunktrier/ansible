@@ -8,3 +8,5 @@
     - htop
     - mtr
     - dnsutils
+    - man
+    - arping
