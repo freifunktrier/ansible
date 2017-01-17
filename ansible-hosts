@@ -1,3 +1,4 @@
 salem ansible_ssh_user=ansible ansible_ssh_port=54922 ansible_ssh_host=freifunk.maschinendeck.derpy.ws icvpn_hostname=trier3 icvpn_tinc_port=655 ethzero=eth0
 baldur ansible_ssh_user=ansible ansible_ssh_port=22 ansible_ssh_host=77.87.50.12 icvpn_hostname=trier4 icvpn_tinc_port=656 ethzero=ens3
 ankerstich ansible_ssh_user=ansible ansible_ssh_port=22901 ansible_ssh_host=ankerstich.danielfett.de icvpn_hostname=trier2 icvpn_tinc_port=755 ethzero=ens18
+neso ansible_ssh_user=ansible ansible_ssh_port=22 ansible_ssh_host=neso.maschinen.space icvpn_hostname=trier5 icvpn_tinc_port=655 ethzero=ens18
