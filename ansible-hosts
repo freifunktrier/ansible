@@ -3,3 +3,6 @@ salem ansible_ssh_user=ansible ansible_ssh_port=54922 ansible_ssh_host=freifunk.
 baldur ansible_ssh_user=ansible ansible_ssh_port=22 ansible_ssh_host=77.87.50.12 icvpn_hostname=trier4 icvpn_tinc_port=656 ethzero=ens3
 neso ansible_ssh_user=ansible ansible_ssh_port=22 ansible_ssh_host=neso.maschinen.space icvpn_hostname=trier5 icvpn_tinc_port=655 ethzero=ens18
 glubit ansible_ssh_user=ansible ansible_ssh_port=22 ansible_ssh_host=glubit.digital-layout.de icvpn_hostname=trier6 icvpn_tinc_port=655 ethzero=ens3
+errai ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=errai.maschinen.space icvpn_hostname=trier7 icvpn_tinc_port=655 ethzero=eth0
+naos ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=naos.maschinen.space icvpn_hostname=trier8 icvpn_tinc_port=655 ethzero=eth0
+
