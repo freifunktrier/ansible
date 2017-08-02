@@ -1,0 +1,2 @@
+- name: remote cron
+  cron: name="Update icvpn-meta" minute="43" hour="11" job="/usr/local/bin/update-icvpnmeta.sh > /dev/null 2>&1" state=absent

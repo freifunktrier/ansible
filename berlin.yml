@@ -1,18 +1,17 @@
 ---
-- hosts: supernode
+- hosts: berlin
   sudo: yes
   roles:
      - pre-python
      - users
      - update
-     - iptables-supernode
+     - tinc-icvpn
+     - iptables-berlin
      - netconfig
+     - icvpn-autoupdate
      - alfred-announce
      - vnstat-apache
+     - dhcp
      - munin-node
      - custom-sysctl
      - collectd
-     - no-icvpn-autoupdate
-     - no-dhcp
-     - no-bird-icvpn
-     - no-tinc-icvpn

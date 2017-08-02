@@ -3,6 +3,4 @@ dependencies:
   - { role: Supernodes-git }
   - { role: fastd }
   - { role: batman }
-  - { role: tinc-icvpn }
   - { role: alfred }
-  - { role: iptables }

@@ -1,0 +1,9 @@
+
+- name: install tinc
+  apt: name=tinc state=absent
+
+- name: undeploy cron
+  cron: name="Update tinc-keys" minute="53" hour="11" job="cd /etc/tinc/icvpn/; /usr/bin/git pull > /dev/null 2>&1" state=absent
+
+- meta: flush_handlers
+

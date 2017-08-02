@@ -1,0 +1,14 @@
+- name: remove dhcp-Server-dependencys
+  apt: 
+    name: isc-dhcp-server 
+    state: absent
+
+- name: remove dhcp-Server-relay
+  apt: 
+    name: isc-dhcp-relay 
+    state: absent
+
+- name: remove cron
+  cron: name="Update DHCP-Static" minute="48" hour="11" job="/usr/local/bin/update-dhcpstatic.sh > /dev/null 2>&1" state=absent 
+- meta: flush_handlers
+

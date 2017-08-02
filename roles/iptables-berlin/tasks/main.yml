@@ -1,0 +1,22 @@
+
+- name: installing dependencys
+  apt: name={{item}} state=present
+  with_items:
+       - jq
+       - iptables
+
+- name: deleting old cronjob
+  cron: name="Update firewall"
+        minute="*"
+        job="/var/lib/Supernodes/iptables.sh"
+        state=absent
+
+- name: creating new cronjob
+  cron: name="Update firewall (Berlin)"
+        minute="*"
+        job="/var/lib/Supernodes/iptables-berlin.sh"
+        state=present
+
+- name: reload iptables
+  command: /var/lib/Supernodes/iptables-berlin.sh
+  changed_when: False

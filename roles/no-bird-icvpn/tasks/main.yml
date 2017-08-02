@@ -1,0 +1,7 @@
+
+- name: removing bird(6)
+  apt: name={{ item }} state=absent
+  with_items:
+      - bird
+
+- meta: flush_handlers
