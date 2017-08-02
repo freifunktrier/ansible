@@ -1,5 +1,5 @@
 #!/bin/bash            
-FASTD_PEERS=/etc/fastd/fftr-mesh-vpn/peers
+FASTD_PEERS=/etc/fastd/peers
 function getCurrentVersion() {
  # Get hash from latest revision
  git log --format=format:%H -1
