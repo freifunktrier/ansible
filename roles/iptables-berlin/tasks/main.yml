@@ -11,12 +11,19 @@
         job="/var/lib/Supernodes/iptables.sh"
         state=absent
 
-- name: creating new cronjob
+- name: deleting new cronjob two
   cron: name="Update firewall (Berlin)"
         minute="*"
         job="/var/lib/Supernodes/iptables-berlin.sh"
+        state=absent
+
+- name: creating new cronjob
+  cron: name="Update firewall (Berlin)"
+        minute="*"
+        job="/var/lib/Supernodes/configs/0-common/iptables-berlin.sh"
         state=present
 
+            
 - name: reload iptables
-  command: /var/lib/Supernodes/iptables-berlin.sh
+  command: /var/lib/Supernodes/configs/0-common/iptables-berlin.sh
   changed_when: False
