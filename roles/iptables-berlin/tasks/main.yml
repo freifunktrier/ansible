@@ -11,7 +11,7 @@
         job="/var/lib/Supernodes/iptables.sh"
         state=absent
 
-- name: deleting new cronjob two
+- name: deleting this cronjob too
   cron: name="Update firewall (Berlin)"
         minute="*"
         job="/var/lib/Supernodes/iptables-berlin.sh"
