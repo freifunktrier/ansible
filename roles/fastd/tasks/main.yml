@@ -13,6 +13,9 @@
   apt: name=fastd state=present
 
 - name: fastd directories
+  file: path="/etc/fastd/fvpn" state=directory mode=0700
+  
+- name: fastd1 directories
   file: path="/etc/fastd/fvpn_01" state=directory mode=0700
 
 - name: fastd2 directories
