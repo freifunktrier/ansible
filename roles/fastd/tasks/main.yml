@@ -77,7 +77,7 @@
        dest=/etc/fastd/peers
 
 - name: fastd config peer_segment_key_00
-  file: src=/etc/fastd/peers/seg_00 dest=/etc/fastd/fvpn/peers state=link
+  file: src=/etc/fastd/peers dest=/etc/fastd/fvpn/peers state=link
 
 - name: fastd config peer_segment_key_01
   file: src=/etc/fastd/peers/seg_01 dest=/etc/fastd/fvpn_01/peers state=link
