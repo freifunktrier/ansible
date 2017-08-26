@@ -12,11 +12,12 @@
 # By default this script does nothing.
 
 #initialise firewall
-/var/lib/Supernodes/iptables.sh
+/var/lib/Supernodes/configs/{{ ansible_hostname }}/rc.local 
+
 #intialise routing
-/var/lib/Supernodes/setup-routes.sh
+# /var/lib/Supernodes/setup-routes.sh
 #initialise batman
-ifup bat0
+# ifup bat0
 
 
 exit 0
