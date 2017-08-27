@@ -9,6 +9,5 @@
        dest=/var/lib/Supernodes-dynamic
 
 - name: delete whitelist cron
-  cron: name="Update Supernodes-dynamic" minute="32" hour="18" job="cd /var/lib/Supernodes-dynamic; /usr/bin/git pull > /dev/null 2>&1"
-  state=absent
+  cron: name="Update Supernodes-dynamic" minute="32" hour="18" job="cd /var/lib/Supernodes-dynamic; /usr/bin/git pull > /dev/null 2>&1" state=absent
 
