@@ -22,7 +22,6 @@
     - bat03
     - bat04
     - bat05
-    - eth0
 
 - name: load rc.local
   command: /etc/rc.local

@@ -13,12 +13,12 @@
 - name: extracting alfred
   unarchive: src=/usr/local/src/alfred-2014.4.0.tar.gz dest=/usr/local/src/ copy=no
 
-#neede because it's missing in ubuntus libcap-dev
+# neede because it's missing in ubuntus libcap-dev
 #- name: copying pkgconf
-#  copy: src=libcap.pc dest=/usr/local/src/alfred-2015.0/libcap.pc
+#  copy: src=libcap.pc dest=/usr/local/src/alfred-2014.4.0/libcap.pc
 
-- name: compiling alfred
-  shell: make CONFIG_ALFRED_GPSD=n chdir=/usr/local/src/alfred-2014.4.0 creates=/usr/local/src/alfred-2014.4.0/alfred
+#- name: compiling alfred
+#  shell: make CONFIG_ALFRED_GPSD=n chdir=/usr/local/src/alfred-2014.4.0 creates=/usr/local/src/alfred-2014.4.0/alfred
 
 
 

@@ -1,10 +1,11 @@
 [berlin]
 #baldur ansible_ssh_user=tackin ansible_ssh_port=22 ansible_ssh_host=baldur.digital-layout.de icvpn_hostname=trier1 icvpn_tinc_port=656 ethzero=ens3
-glubit ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=glubit.digital-layout.de icvpn_hostname=trier2 icvpn_tinc_port=655 ethzero=ens3
+#glubit ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=glubit.digital-layout.de icvpn_hostname=trier2 icvpn_tinc_port=655 ethzero=ens3
 
 [supernode]
 #rogan ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=rogan.fftr.maschinen.space ethzero=eth0
 #salem ansible_ssh_user=tackin ansible_ssh_port=54922 ansible_ssh_host=freifunk.maschinendeck.derpy.ws ethzero=eth0
-#neso ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=neso.maschinen.space ethzero=ens18
+neso ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host==neso.maschinen.space ethzero=ens18
 #errai ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=errai.maschinen.space ethzero=eth0
 #naos ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=naos.maschinen.space ethzero=eth0
+
