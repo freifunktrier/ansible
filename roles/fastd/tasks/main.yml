@@ -50,22 +50,22 @@
   file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/fvpn_05/fastd.conf dest=/etc/fastd/fvpn_05/fastd.conf state=link
   
 - name: fastd config server_symlinks00
-  file: src=/var/lib/Supernodes/configs/0-common/fastd/seg_00/server dest=/etc/fastd/fvpn/servers state=link
+  file: src=/etc/fastd/peers/gateways/seg_00 dest=/etc/fastd/fvpn/servers state=link
   
 - name: fastd config server_symlinks01
-  file: src=/var/lib/Supernodes/configs/0-common/fastd/seg_01/server dest=/etc/fastd/fvpn_01/servers state=link
+  file: src=/etc/fastd/peers/gateways/seg_01 dest=/etc/fastd/fvpn_01/servers state=link
   
 - name: fastd config server_symlinks02
-  file: src=/var/lib/Supernodes/configs/0-common/fastd/seg_02/server dest=/etc/fastd/fvpn_02/servers state=link
+  file: src=/etc/fastd/peers/gateways/seg_02 dest=/etc/fastd/fvpn_02/servers state=link
   
 - name: fastd config server_symlinks03
-  file: src=/var/lib/Supernodes/configs/0-common/fastd/seg_03/server dest=/etc/fastd/fvpn_03/servers state=link
+  file: src=/etc/fastd/peers/gateways/seg_03 dest=/etc/fastd/fvpn_03/servers state=link
   
 - name: fastd config server_symlinks04
-  file: src=/var/lib/Supernodes/configs/0-common/fastd/seg_04/server dest=/etc/fastd/fvpn_04/servers state=link
+  file: src=/etc/fastd/peers/gateways/seg_04 dest=/etc/fastd/fvpn_04/servers state=link
   
 - name: fastd config server_symlinks05
-  file: src=/var/lib/Supernodes/configs/0-common/fastd/seg_05/server dest=/etc/fastd/fvpn_05/servers state=link
+  file: src=/etc/fastd/peers/gateways/seg_05 dest=/etc/fastd/fvpn_05/servers state=link
   
   notify: 
   - restart fastd
