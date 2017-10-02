@@ -1,7 +1,8 @@
 - name: checkout Supernodes
   git: repo=https://github.com/freifunktrier/Supernodes.git
        dest=/var/lib/Supernodes
-       version=tackin_01
+       # version=tackin_01
+       version=master
  
 
 - name: checkout Supernodes-dynamic
