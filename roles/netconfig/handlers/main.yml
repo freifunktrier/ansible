@@ -5,9 +5,23 @@
   with_items:
     - lo
     - br-fftr
-    - fftr-mesh-vpn
+    - br-fftr_01
+    - br-fftr_02
+    - br-fftr_03
+    - br-fftr_04
+    - br-fftr_05
+    - fvpn
+    - fvpn_01
+    - fvpn_02
+    - fvpn_03
+    - fvpn_04
+    - fvpn_05
     - bat0
-    - eth0
+    - bat01
+    - bat02
+    - bat03
+    - bat04
+    - bat05
 
 - name: load rc.local
   command: /etc/rc.local

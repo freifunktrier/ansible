@@ -13,22 +13,91 @@
   apt: name=fastd state=present
 
 - name: fastd directories
-  file: path="/etc/fastd/fftr-mesh-vpn" state=directory mode=0700
+  file: path="/etc/fastd/fvpn" state=directory mode=0700
+  
+- name: fastd1 directories
+  file: path="/etc/fastd/fvpn_01" state=directory mode=0700
 
+- name: fastd2 directories
+  file: path="/etc/fastd/fvpn_02" state=directory mode=0700
+  
+- name: fastd3 directories
+  file: path="/etc/fastd/fvpn_03" state=directory mode=0700
+  
+- name: fastd4 directories
+  file: path="/etc/fastd/fvpn_04" state=directory mode=0700
+  
+- name: fastd5 directories
+  file: path="/etc/fastd/fvpn_05" state=directory mode=0700
+
+  
 - name: fastd config symlink
-  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/fastd.conf dest=/etc/fastd/fftr-mesh-vpn/fastd.conf state=link
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/fvpn/fastd.conf dest=/etc/fastd/fvpn/fastd.conf state=link
+  
+- name: fastd config symlinks1
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/fvpn_01/fastd.conf dest=/etc/fastd/fvpn_01/fastd.conf state=link
+  
+- name: fastd config symlinks2
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/fvpn_02/fastd.conf dest=/etc/fastd/fvpn_02/fastd.conf state=link
+  
+- name: fastd config symlinks3
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/fvpn_03/fastd.conf dest=/etc/fastd/fvpn_03/fastd.conf state=link
+  
+- name: fastd config symlinks4
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/fvpn_04/fastd.conf dest=/etc/fastd/fvpn_04/fastd.conf state=link
+  
+- name: fastd config symlinks5
+  file: src=/var/lib/Supernodes/configs/{{ ansible_hostname }}/fvpn_05/fastd.conf dest=/etc/fastd/fvpn_05/fastd.conf state=link
+  
+- name: fastd config server_symlinks00
+  file: src=/etc/fastd/peers/gateways/seg_00 dest=/etc/fastd/fvpn/servers state=link
+  
+- name: fastd config server_symlinks01
+  file: src=/etc/fastd/peers/gateways/seg_01 dest=/etc/fastd/fvpn_01/servers state=link
+  
+- name: fastd config server_symlinks02
+  file: src=/etc/fastd/peers/gateways/seg_02 dest=/etc/fastd/fvpn_02/servers state=link
+  
+- name: fastd config server_symlinks03
+  file: src=/etc/fastd/peers/gateways/seg_03 dest=/etc/fastd/fvpn_03/servers state=link
+  
+- name: fastd config server_symlinks04
+  file: src=/etc/fastd/peers/gateways/seg_04 dest=/etc/fastd/fvpn_04/servers state=link
+  
+- name: fastd config server_symlinks05
+  file: src=/etc/fastd/peers/gateways/seg_05 dest=/etc/fastd/fvpn_05/servers state=link
+  
   notify: 
   - restart fastd
 
 - name: fastd keygen
-  script: fastd-keygen.sh /etc/fastd/fftr-mesh-vpn creates=/etc/fastd/fftr-mesh-vpn/secret.conf
+  script: fastd-keygen.sh /etc/fastd/fvpn creates=/etc/fastd/fvpn/secret.conf
   notify: 
   - restart fastd
 
 - name: checkout peerkey-repository
   git: repo=https://github.com/freifunktrier/fftr-peers.git
-       dest=/etc/fastd/fftr-mesh-vpn/peers
+       dest=/etc/fastd/peers
 
+- name: fastd config peer_segment_key_00
+  file: src=/etc/fastd/peers dest=/etc/fastd/fvpn/peers state=link
+
+- name: fastd config peer_segment_key_01
+  file: src=/etc/fastd/peers/seg_01 dest=/etc/fastd/fvpn_01/peers state=link
+
+- name: fastd config peer_segment_key_02
+  file: src=/etc/fastd/peers/seg_02 dest=/etc/fastd/fvpn_02/peers state=link
+
+- name: fastd config peer_segment_key_03
+  file: src=/etc/fastd/peers/seg_03 dest=/etc/fastd/fvpn_03/peers state=link
+
+- name: fastd config peer_segment_key_04
+  file: src=/etc/fastd/peers/seg_04 dest=/etc/fastd/fvpn_04/peers state=link
+
+- name: fastd config peer_segment_key_05
+  file: src=/etc/fastd/peers/seg_05 dest=/etc/fastd/fvpn_05/peers state=link
+
+       
 - meta: flush_handlers
 
 - name: deploy updateskript
