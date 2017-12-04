@@ -1,0 +1,13 @@
+[Unit]
+Description=Respondd
+
+[Service]
+ExecStart=/opt/mesh-announce/respondd.py -p 1001 -g ff02::2:1001 -i br-fftr_03 -i fvpn_03 -b bat03 -s fftr -d /opt/mesh-announce
+Restart=always
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+WorkingDirectory=/opt/mesh-announce
+
+
+[Install]
+WantedBy=multi-user.target
+

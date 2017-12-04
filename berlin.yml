@@ -15,3 +15,4 @@
      - munin-node
      - custom-sysctl
      - collectd
+     - respondd

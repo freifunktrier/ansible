@@ -6,15 +6,16 @@
     - zlib1g-dev
     - cmake
 
-- name: checkout alfred-json
-  git: repo=https://github.com/ffnord/alfred-json.git
-       dest=/usr/local/src/alfred-json version=32922616e7aff4616a255d5e6a2931d68fe2d394
+    # we use YANIC with respondd.py now
+#- name: checkout alfred-json
+#  git: repo=https://github.com/ffnord/alfred-json.git
+#       dest=/usr/local/src/alfred-json version=32922616e7aff4616a255d5e6a2931d68fe2d394
 
-- name: creating builddir
-  file: path="/usr/local/src/alfred-json/build" state=directory
+#- name: creating builddir
+#  file: path="/usr/local/src/alfred-json/build" state=directory
 
-- name: running cmake
-  command: cmake ../ chdir="/usr/local/src/alfred-json/build" creates=/usr/local/src/alfred-json/build/Makefile
+#- name: running cmake
+#  command: cmake ../ chdir="/usr/local/src/alfred-json/build" creates=/usr/local/src/alfred-json/build/Makefile
 
-- name: running make
-  command: make chdir="/usr/local/src/alfred-json/build" creates=/usr/local/src/alfred-json/build/src/alfred-json
+#- name: running make
+#  command: make chdir="/usr/local/src/alfred-json/build" creates=/usr/local/src/alfred-json/build/src/alfred-json
