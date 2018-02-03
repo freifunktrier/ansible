@@ -1,13 +1,15 @@
 [Unit]
 Description=Respondd
+StartLimitInterval=200
+StartLimitBurst=5
 
 [Service]
 ExecStart=/opt/mesh-announce/respondd.py -p 1001 -g ff02::2:1001 -i br-fftr -i fvpn -b bat0 -s fftr -d /opt/mesh-announce
 Restart=always
+RestartSec=30
 Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 WorkingDirectory=/opt/mesh-announce
 
 
 [Install]
 WantedBy=multi-user.target
-
