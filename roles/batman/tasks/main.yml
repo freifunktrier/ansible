@@ -1,5 +1,10 @@
-- name: installing dkms
-  apt: name=dkms state=present
+
+- name: Installing stuff necessary for dkms and batman
+  apt: name={{item}} state=present
+  with_items:
+       - dkms
+       - build-essential
+       - linux-headers-virtual
 
 - name: downloading batman
   get_url: url=https://downloads.open-mesh.org/batman/stable/sources/batman-adv/batman-adv-2017.2.tar.gz
