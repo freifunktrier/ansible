@@ -4,8 +4,8 @@
 
 [supernode]
 #rogan ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=rogan.fftr.maschinen.space ethzero=eth0
-#salem ansible_ssh_user=tackin ansible_ssh_port=54922 ansible_ssh_host=freifunk.maschinendeck.derpy.ws ethzero=eth0
-neso ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host==neso.maschinen.space ethzero=ens18
+#salem ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=salem.tackin.de ethzero=eth0
+#neso ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host==neso.maschinen.space ethzero=ens18
 #errai ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=errai.maschinen.space ethzero=eth0
-#naos ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=naos.maschinen.space ethzero=eth0
+#naos ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=naos.tackin.de ethzero=eth0
 
