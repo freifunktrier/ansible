@@ -1,6 +1,9 @@
 - name: installing collectd
   apt: name=collectd state=present
 
+- name: Collectd-config-directory present
+  file: path="/etc/collectd" state=directory mode=0700
+  
 - name: deploying configuration
   copy: src=collectd.conf dest=/etc/collectd/collectd.conf
   notify: restart collectd
