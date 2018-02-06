@@ -1,50 +1,15 @@
-- name: installing dependencys
-  apt: name={{ item }} state=present
-  with_items:
-      - python3-netifaces
-      - python3-pip
-      - python3-setuptools
+#- name: installing dependencys
+#  apt: name={{ item }} state=present
+#  with_items:
+#      - python3-netifaces
+#      - python3-pip
+#      - python3-setuptools
 
-- name: installing more dependencys
-  pip: name=py-cpuinfo executable=pip3
+#- name: installing more dependencys
+#  pip: name=py-cpuinfo executable=pip3
 
   # we use YANIC and respondd.py now
 #- name: checkout ffnord-alfred-announce
 #  git: repo=https://github.com/freifunk-mwu/ffnord-alfred-announce.git
 #       dest=/usr/local/src/ffnord-alfred-announce
 #       version=9399a37f5659fb49953e0a155d9cce7f8209b891
-
-- name: remove old cron
-  cron: name="Announce to alfred"
-        minute="*"
-        job="PATH=/usr/local/src/alfred-2015.0/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin /usr/local/src/ffnord-alfred-announce/announce.sh  -f fftr-mesh-vpn -i br-fftr" state=absent
-
-- name: remove cron_00
-  cron: name="Announce to alfred seg_00"
-        minute="*"
-        job="PATH=/usr/local/src/alfred-2015.0/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin /usr/local/src/ffnord-alfred-announce/announce.sh  -f fvpn -i br-fftr" state=absent
-
-- name: remove cron_01
-  cron: name="Announce to alfred seg_01"
-        minute="*"
-        job="PATH=/usr/local/src/alfred-2015.0/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin /usr/local/src/ffnord-alfred-announce/announce.sh  -f fvpn_01 -i br-fftr_01" state=absent
-        
-- name: remove cron_02
-  cron: name="Announce to alfred seg_02"
-        minute="*"
-        job="PATH=/usr/local/src/alfred-2015.0/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin /usr/local/src/ffnord-alfred-announce/announce.sh  -f fvpn_02 -i br-fftr_02" state=absent
-
-- name: remove cron_03
-  cron: name="Announce to alfred seg_03"
-        minute="*"
-        job="PATH=/usr/local/src/alfred-2015.0/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin /usr/local/src/ffnord-alfred-announce/announce.sh  -f fvpn_03 -i br-fftr_03" state=absent
-
-- name: Remove cron_04
-  cron: name="Announce to alfred seg_04"
-        minute="*"
-        job="PATH=/usr/local/src/alfred-2015.0/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin /usr/local/src/ffnord-alfred-announce/announce.sh  -f fvpn_04 -i br-fftr_04" state=absent
-
-- name: remove cron_05
-  cron: name="Announce to alfred seg_05"
-        minute="*"
-        job="PATH=/usr/local/src/alfred-2015.0/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin /usr/local/src/ffnord-alfred-announce/announce.sh  -f fvpn_05 -i br-fftr_05" state=absent
