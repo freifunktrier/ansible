@@ -6,6 +6,7 @@
   with_items:
     - vim
     - htop
+    - iftop
     - mtr
     - dnsutils
     - man
