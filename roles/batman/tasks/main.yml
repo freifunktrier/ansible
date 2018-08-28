@@ -7,19 +7,19 @@
        - linux-headers-virtual
 
 - name: downloading batman
-  get_url: url=https://downloads.open-mesh.org/batman/stable/sources/batman-adv/batman-adv-2017.2.tar.gz
+  get_url: url=https://downloads.open-mesh.org/batman/stable/sources/batman-adv/batman-adv-2018.2.tar.gz
            dest=/usr/src/batman-adv.tar.gz
-           checksum="sha1:14d3323c4cf17be3308f19a4ad8e64107f8c9a12"
+           checksum="sha1:e5e5235f2818b59f5869209d160eb3c9e8bd29a1"
            
 
 - name: extracting batman
   unarchive: src=/usr/src/batman-adv.tar.gz dest=/usr/src copy=no
 
 - name: deploying dkms.conf
-  copy: src=dkms.conf dest=/usr/src/batman-adv-2017.2/dkms.conf owner=root group=root mode=611
+  copy: src=dkms.conf dest=/usr/src/batman-adv-2018.2/dkms.conf owner=root group=root mode=611
 
 - name: adding batman to dkms
-  command: dkms add -m batman-adv -v 2017.2 creates=/var/lib/dkms/batman-adv/2017.2
+  command: dkms add -m batman-adv -v 2018.2 creates=/var/lib/dkms/batman-adv/2018.2
   notify: 
   - build batman-dkms
   - install batman-dkms
