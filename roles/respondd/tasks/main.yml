@@ -1,6 +1,11 @@
 
 # we use YANIC and respondd.py now
 # we start one service for each batman-Segment
+- name: Installing stuff necessary for respondd
+  apt: name={{item}} state=present
+  with_items:
+       - ethtool
+       - python3-netifaces
 
 # This repo provides us a mulit-interface respondd.py
 - name: checkout mesh-announce
