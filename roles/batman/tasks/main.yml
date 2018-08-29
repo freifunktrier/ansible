@@ -4,7 +4,8 @@
   with_items:
        - dkms
        - build-essential
-       - linux-headers-virtual
+       - linux-headers-amd64
+#       - linux-headers-virtual
 
 - name: downloading batman
   get_url: url=https://downloads.open-mesh.org/batman/stable/sources/batman-adv/batman-adv-2018.2.tar.gz
