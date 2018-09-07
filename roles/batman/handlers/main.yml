@@ -1,7 +1,7 @@
 ---
 
 - name: build batman-dkms
-  command: dkms build -m batman-adv -v 2017.2
+  command: dkms build -m batman-adv -v 2018.2
 
 - name: install batman-dkms
-  command: dkms install -m batman-adv -v 2017.2
+  command: dkms install -m batman-adv -v 2018.2
