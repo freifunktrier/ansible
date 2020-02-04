@@ -1,7 +1,7 @@
 [berlin]
 #baldur ansible_ssh_user=tackin ansible_ssh_port=22 ansible_ssh_host=baldur.digital-layout.de icvpn_hostname=trier1 icvpn_tinc_port=656 ethzero=ens3
 #glubit ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=glubit.digital-layout.de icvpn_hostname=trier2 icvpn_tinc_port=655 ethzero=ens3
-# rustig ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=45.14.233.135 icvpn_hostname=trier3 icvpn_tinc_port=655 ethzero=eth0
+#rustig ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=45.14.233.135 icvpn_hostname=trier3 icvpn_tinc_port=655 ethzero=eth0
 
 [supernode]
 #rogan ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=rogan.fftr.maschinen.space ethzero=eth0
