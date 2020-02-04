@@ -1,15 +1,15 @@
 - name: install apt-https-transport
   apt: name=apt-transport-https state=present
 
-- name: Add repository-gpg-key for fastd
-  apt_key:
-    data: "{{ lookup('file', '6664E7BDA6B669881EC52E7516EF3F64CB201D9C.asc') }}"
-    state: present
+#- name: Add repository-gpg-key for fastd
+#  apt_key:
+#    data: "{{ lookup('file', '6664E7BDA6B669881EC52E7516EF3F64CB201D9C.asc') }}"
+#    state: present
 
-- name: add universe-factory for fastd
-  apt_repository: >
-    repo="deb https://repo.universe-factory.net/debian/ sid main"
-    update_cache=yes
+#- name: add universe-factory for fastd
+#  apt_repository: >
+#    repo="deb https://repo.universe-factory.net/debian/ sid main"
+#    update_cache=yes
 
 - name: install fastd
   apt: name=fastd state=present
