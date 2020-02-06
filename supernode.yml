@@ -1,6 +1,6 @@
 ---
 - hosts: supernode
-  sudo: yes
+  # sudo: yes
   roles:
      - pre-python
      - users

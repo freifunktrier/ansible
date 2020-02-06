@@ -9,51 +9,59 @@
 
 # This repo provides us a mulit-interface respondd.py
 - name: checkout mesh-announce
-  git: repo=https://github.com/freifunktrier/mesh-announce.git
+  git: repo=https://github.com/freifunk-darmstadt/mesh-announce.git
        dest=/opt/mesh-announce
 
 - name: install respondd.service
   copy: src=respondd.service dest=/etc/systemd/system/respondd.service
        
-#- name: install respondd1.service
-#  copy: src=respondd1.service dest=/etc/systemd/system/respondd1.service
+- name: install respondd1.service
+  copy: src=respondd1.service dest=/etc/systemd/system/respondd1.service
 
-#- name: install respondd2.service
-#  copy: src=respondd2.service dest=/etc/systemd/system/respondd2.service
+- name: install respondd2.service
+  copy: src=respondd2.service dest=/etc/systemd/system/respondd2.service
 
-#- name: install respondd3.service
-#  copy: src=respondd3.service dest=/etc/systemd/system/respondd3.service
+- name: install respondd3.service
+  copy: src=respondd3.service dest=/etc/systemd/system/respondd3.service
 
-#- name: install respondd4.service
-#  copy: src=respondd4.service dest=/etc/systemd/system/respondd4.service
+- name: install respondd4.service
+  copy: src=respondd4.service dest=/etc/systemd/system/respondd4.service
 
-#- name: just force systemd to reread configs
-#  systemd: daemon_reload=yes
+- name: install respondd5.service
+  copy: src=respondd4.service dest=/etc/systemd/system/respondd5.service
+
+- name: just force systemd to reread configs
+  systemd: daemon_reload=yes
  
 - name: restart respondd.service
   systemd:
     state: restarted
     name: respondd.service
 
-#- name: restart respondd1.service
-#  systemd:
-#    state: restarted
-#    name: respondd1.service
+- name: restart respondd1.service
+  systemd:
+    state: restarted
+    name: respondd1.service
 
-#- name: restart respondd2.service
-#  systemd:
-#    state: restarted
-#    name: respondd2.service
+- name: restart respondd2.service
+  systemd:
+    state: restarted
+    name: respondd2.service
 
-#- name: restart respondd3.service
-#  systemd:
-#    state: restarted
-#    name: respondd3.service
+- name: restart respondd3.service
+  systemd:
+    state: restarted
+    name: respondd3.service
 
-#- name: restart respondd4.service
-#  systemd:
-#    state: restarted
-#    name: respondd4.service
+- name: restart respondd4.service
+  systemd:
+    state: restarted
+    name: respondd4.service
+
+- name: restart respondd5.service
+  systemd:
+    state: restarted
+    name: respondd4.service
 
 
 - name: enable respondd.service
@@ -61,23 +69,28 @@
     name: respondd.service
     enabled: yes
     
-#- name: enable respondd1.service
-#  systemd:
-#    name: respondd1.service
-#    enabled: yes
+- name: enable respondd1.service
+  systemd:
+    name: respondd1.service
+    enabled: yes
 
-#- name: enable respondd2.service
-#  systemd:
-#    name: respondd2.service
-#    enabled: yes
+- name: enable respondd2.service
+  systemd:
+    name: respondd2.service
+    enabled: yes
 
-#- name: enable respondd3.service
-#  systemd:
-#    name: respondd3.service
-#    enabled: yes
+- name: enable respondd3.service
+  systemd:
+    name: respondd3.service
+    enabled: yes
 
-#- name: enable respondd4.service
-#  systemd:
-#    name: respondd4.service
-#    enabled: yes
-    
+- name: enable respondd4.service
+  systemd:
+    name: respondd4.service
+    enabled: yes
+
+- name: enable respondd4.service
+  systemd:
+    name: respondd5.service
+    enabled: yes
+

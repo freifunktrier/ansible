@@ -7,6 +7,7 @@
 #rogan ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=rogan.fftr.maschinen.space ethzero=eth0
 #salem ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=salem.tackin.de ethzero=eth0
 #neso ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=neso.tackin.de ethzero=eth0
-erai ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=45.14.233.151 ethzero=eth0
+#erai ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=45.14.233.151 ethzero=eth0
+mazel ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=45.14.233.152 ethzero=eth0
 #naos ansible_ssh_user=root ansible_ssh_port=22 ansible_ssh_host=naos.tackin.de ethzero=eth0
 
